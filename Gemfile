@@ -29,3 +29,4 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'font-awesome-sass', '~> 5.12.0'
