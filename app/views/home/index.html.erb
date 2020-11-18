@@ -35,6 +35,10 @@
 
 <h1>Hello #index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
-icon('fas', 'flag')
-<div class="fa fa-flag">dddd</div>
+<div class="fa fa-flag"></div>
 <i class="fab fa-github"></i>
+
+<%= link_to root_path, class: 'btn btn-success' do %>
+  <div class="fa fa-flag"></div>
+  Homepage
+<% end %>
