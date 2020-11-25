@@ -18,14 +18,16 @@
   
     <tbody>
       <% @todos.each do |todo| %>
-        <tr>
-          <td><%= todo.content %></td>
-          <td><%= todo.complete %></td>
-          <td><%= todo.user %></td>
-          <td><%= link_to 'Show', todo %></td>
-          <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
-          <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+        <% if current_user == todo.user %>
+          <tr>
+            <td><%= todo.content %></td>
+            <td><%= todo.complete %></td>
+            <td><%= todo.user %></td>
+            <td><%= link_to 'Show', todo %></td>
+            <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
+            <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
