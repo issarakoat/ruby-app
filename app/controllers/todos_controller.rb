@@ -28,7 +28,7 @@ class TodosController < ApplicationController
     @todo.user = current_user
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to @todo, notice: 'Todo was successfully created.' }
+        format.html { redirect_to action: "index", notice: 'Todo was successfully created.' }
         format.json { render :show, status: :created, location: @todo }
       else
         format.html { render :new }
