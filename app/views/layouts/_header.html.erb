@@ -1,8 +1,62 @@
-<% if current_user %>
-  <%= current_user.email %>
-  <%= link_to 'Account settings', edit_user_registration_path %>
-  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to 'Sign Up', new_user_registration_path %>
-  <%= link_to 'Log In', new_user_session_path %>
-<% end %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to root_path, class: 'btn btn-success' do %>
+    <i class="fas fa-home"></i>
+  <% end %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <% if current_user %>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Projects
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to todos_path, class: 'dropdown-item' do %>
+              <div class="fa fa-flag"></div>
+              Todos
+            <% end %>
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav mr-right">
+        <li class="nav-item dropdown">
+          <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdown" role="button">
+            <b>
+              <%= current_user.email %>
+            </b>
+          </a>
+          <div aria-labelledby="navbarDropdown" class="dropdown-menu dropdown-menu-right">
+            <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
+              <div class="fa fa-cog"></div>
+              <b>Account settings</b>
+            <% end %>
+            <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
+              <div class="fa fa-sign-out-alt"></div>
+              <b>Sign out</b>
+            <% end %>
+          </div>
+        </li>
+      </ul>
+    <% else %>
+      <ul class="navbar-nav mr-auto"></ul>
+      <ul class="navbar-nav mr-right">
+        <li class="<%= 'active font-weight-bold' if current_page?(new_user_registration_path) %> nav-item">
+          <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
+        </li>
+        <li class="<%= 'active font-weight-bold' if current_page?(new_user_session_path) %> nav-item">
+          <%= link_to 'Log In', new_user_session_path, class: 'nav-link' %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</nav>
