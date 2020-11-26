@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <%= link_to root_path, class: 'btn btn-success' do %>
     <i class="fas fa-home"></i>
   <% end %>
@@ -28,6 +28,21 @@
           </div>
         </li>
       </ul>
+      
+    <!--search stuff-->
+    <!--<div class="form-inline my-2 my-lg-0">-->
+    <!--  <%= form_tag(todos_path, method: :get) do %>-->
+    <!--    <div class="input-group">-->
+    <!--      <%= text_field_tag :content, params[:content], autocomplete: 'off', placeholder: "Search todo", class: 'form-control-sm' %>-->
+    <!--      <span class="input-group-append">-->
+    <!--        <button class="btn btn-primary btn-sm" type="submit">-->
+    <!--          <span aria-hidden="true" class="fa fa-search"></span>-->
+    <!--        </button>-->
+    <!--      </span>-->
+    <!--    </div>-->
+    <!--  <% end %>-->
+    <!--</div>-->
+      <!--user stuff-->
       <ul class="navbar-nav mr-right">
         <li class="nav-item dropdown">
           <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdown" role="button">
