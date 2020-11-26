@@ -12,6 +12,12 @@
         <li class="nav-item">
           <a class="nav-link" href="#">About</a>
         </li>
+        <li class="<%= 'active font-weight-bold' if current_page?(users_path) %> nav-item">
+          <%= link_to users_path, class: 'nav-link' do %>
+            <div class="fa fa-users"></div>
+            Users
+          <% end %>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Projects
