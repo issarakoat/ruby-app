@@ -9,7 +9,9 @@
     ago
   </div>
   <div class="card-footer">
-    <%= 'sign_in_count'.humanize %>
+    <b>
+      <%= 'sign_in_count'.humanize + ":" %>
+    </b>
     <%= user.sign_in_count %>
     <div class="row"></div>
     <%= 'current_sign_in_at'.humanize %>
