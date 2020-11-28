@@ -5,4 +5,8 @@ class Todo < ApplicationRecord
   belongs_to :user
   extend FriendlyId
   friendly_id :content, use: :slugged
+  
+  include PublicActivity::Model
+  # tracked
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
 end
