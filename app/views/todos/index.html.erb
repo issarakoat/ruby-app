@@ -1,11 +1,15 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
   
-  <h1>
-    Todos:
-    <%= @todos.count %>
-  </h1>
-  
+  <h3>
+    <div class="text-center mb-4">
+      Todos
+      <div class="badge badge-info">
+        <%= @todos.count %>
+      </div>
+    </div>
+  </h3>
+
   <table class='table'>
     <thead>
       <tr>
