@@ -19,6 +19,7 @@ class TodosController < ApplicationController
 
   # GET /todos/1/edit
   def edit
+    # authorize @todo
   end
 
   # POST /todos
@@ -42,7 +43,7 @@ class TodosController < ApplicationController
   def update
     respond_to do |format|
       if @todo.update(todo_params)
-        format.html { redirect_to @todo, notice: 'Todo was successfully updated.' }
+        format.html { redirect_to action: "index", notice: 'Todo was successfully updated.' }
         format.json { render :show, status: :ok, location: @todo }
       else
         format.html { render :edit }

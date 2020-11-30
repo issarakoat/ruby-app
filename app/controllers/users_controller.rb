@@ -2,8 +2,12 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
   def index
     # @users = User.all.order(created_at: :desc)
-    @q = User.ransack(params[:q])
-    @users = @q.result(distinct: true)
+    if current_user.has_role?(:admin)
+      @q = User.ransack(params[:q])
+      @users = @q.result(distinct: true)
+    else
+      redirect_to root_path, alert: 'you dont have access'
+    end
   end
   
   def edit
