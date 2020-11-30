@@ -30,11 +30,43 @@
               <%= check_box("tag", tag.id, {checked: todo.complete}) %>
             </td>
             <td><%= todo.user %></td>
-            <td><%= link_to 'Show', todo %></td>
+            <td>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Detail
+              </button>
+              
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                          <strong>Content:</strong>
+                          <%= todo.content %>
+                        </p>
+                        
+                        <p>
+                          <strong>Complete:</strong>
+                          <%= todo.complete %>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
             <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
-            <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_todo' %>
-              <i class="fa fa-trash" style="font-size:24px"></i>
+            <td>
+              <%= link_to '<i class="fa fa-trash" style="font-size:24px"></i>'.html_safe, todo, method: :delete, :remote => true, :class => 'delete_todo' %>
             </td>
           </tr>
         <% end %>
