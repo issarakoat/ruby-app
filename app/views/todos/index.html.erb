@@ -25,11 +25,17 @@
         <% if current_user == todo.user %>
           <tr>
             <td><%= todo.content %></td>
-            <td><%= todo.complete %></td>
+            <td>
+              <%= todo.complete %>
+              <%= check_box("tag", tag.id, {checked: todo.complete}) %>
+            </td>
             <td><%= todo.user %></td>
             <td><%= link_to 'Show', todo %></td>
             <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
             <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, :class => 'delete_todo' %>
+              <i class="fa fa-trash" style="font-size:24px"></i>
+            </td>
           </tr>
         <% end %>
       <% end %>
