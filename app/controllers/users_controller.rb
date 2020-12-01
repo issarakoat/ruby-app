@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
+  protect_from_forgery
+
+  after_action :user_activity
   def index
     # @users = User.all.order(created_at: :desc)
     if current_user.has_role?(:admin)
@@ -27,6 +30,10 @@ class UsersController < ApplicationController
   end
 
   private
+  
+  def user_activity
+    current_user.try :touch
+  end
 
   def set_user
     @user = User.find(params[:id])

@@ -5,14 +5,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
          
-  rolify
   def to_s
     email
   end
   
   has_many :todos
   
-    after_create :assign_default_role
+  after_create :assign_default_role
 
   def assign_default_role
     if User.count == 1
@@ -23,7 +22,10 @@ class User < ApplicationRecord
     end
   end
   
-    validate :must_have_a_role, on: :update
+  validate :must_have_a_role, on: :update
+  def online?
+    updated_at > 2.minutes.ago
+  end
 
   private
   def must_have_a_role
