@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:show, :edit, :update]
   def index
     # @users = User.all.order(created_at: :desc)
     if current_user.has_role?(:admin)
@@ -8,6 +8,9 @@ class UsersController < ApplicationController
     else
       redirect_to root_path, alert: 'you dont have access'
     end
+  end
+  
+  def show
   end
   
   def edit
