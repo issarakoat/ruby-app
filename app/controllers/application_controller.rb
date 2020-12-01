@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
 
   include PublicActivity::StoreController #save current_user using gem public_activity
   
+  include Pagy::Backend 
+  
   private
 
   def user_not_authorized #pundit

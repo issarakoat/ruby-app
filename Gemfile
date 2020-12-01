@@ -38,3 +38,4 @@ gem "rolify"
 gem 'ransack'
 gem 'public_activity'
 gem "pundit"
+gem 'pagy'

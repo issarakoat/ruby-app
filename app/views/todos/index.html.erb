@@ -76,6 +76,6 @@
   
   <br>
   
-  <%= link_to 'Create Todo', new_todo_path, class: 'btn btn-primary' %>
-  
+  <%= link_to 'Create Todo', new_todo_path, class: 'btn btn-primary mb-3' %>
 </div>
+  <%= raw(pagy_bootstrap_nav(@pagy)) %>
