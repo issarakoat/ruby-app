@@ -19,7 +19,7 @@ class TodosController < ApplicationController
 
   # GET /todos/1/edit
   def edit
-    # authorize @todo
+    authorize @todo
   end
 
   # POST /todos

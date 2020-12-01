@@ -5,6 +5,6 @@ class TodoPolicy < ApplicationPolicy
     end
   end
   def edit?
-    # @user.has_role?:admin
+    @record.user_id = @user
   end
 end
