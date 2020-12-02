@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   devise_for :users
   resources :todos
   resources :users, only: [:index, :edit, :show, :update]
