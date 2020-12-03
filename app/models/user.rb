@@ -10,6 +10,8 @@ class User < ApplicationRecord
   end
   
   has_many :todos
+  has_many :comments
+  has_many :posts
   
   after_create :assign_default_role
 
