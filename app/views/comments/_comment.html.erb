@@ -1,0 +1,5 @@
+<%= link_to comment.content, post_comment_path(@post, comment) %>
+<%= comment.content %>
+<%= link_to 'Edit', edit_post_comment_path(@post, comment), class: 'btn btn-sm btn-warning' %>
+<%= link_to 'Destroy', [@post, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+<%= link_to '<i class="fa fa-trash" style="font-size:24px"></i>'.html_safe, [@post, comment], method: :delete, :remote => true, :class => 'delete_comment' %>
