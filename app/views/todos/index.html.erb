@@ -14,7 +14,8 @@
     <thead>
       <tr>
         <th>Content</th>
-        <th>Complete</th>
+        <th>Completion status</th>
+        <th>Action</th>
         <th>User</th>
         <th colspan="3"></th>
       </tr>
@@ -22,12 +23,22 @@
   
     <tbody>
       <% @todos.each do |todo| %>
-        <% if current_user == todo.user %>
           <tr>
             <td><%= todo.content %></td>
             <td>
-              <%= todo.complete %>
-              <%= check_box("tag", tag.id, {checked: todo.complete}) %>
+              <% if todo.complete %>
+                <span class="badge badge-success">completed</span>
+              <% else %>
+                <span class="badge badge-warning">incomplete</span>
+              <%end%>
+       
+            </td>
+            <td>
+              <% if todo.complete %>
+                <%= link_to 'incomplete', incomplete_todo_path(todo), method: :patch, class: 'btn btn-sm btn-danger'%>
+              <% else %>
+                <%= link_to 'complete', complete_todo_path(todo), method: :patch, class: 'btn btn-sm btn-success'%>
+              <%end%>            
             </td>
             <td><%= todo.user %></td>
             <td>
@@ -70,7 +81,6 @@
             </td>
           </tr>
         <% end %>
-      <% end %>
     </tbody>
   </table>
   

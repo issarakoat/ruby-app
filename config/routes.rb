@@ -3,7 +3,12 @@ Rails.application.routes.draw do
     resources :comments
   end
   devise_for :users
-  resources :todos
+  resources :todos do 
+    member do
+      patch :complete
+      patch :incomplete
+    end
+  end
   resources :users, only: [:index, :edit, :show, :update]
   get 'home/index'
   get 'home/activity'

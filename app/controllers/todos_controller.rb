@@ -1,10 +1,10 @@
 class TodosController < ApplicationController
-  before_action :set_todo, only: [:show, :edit, :update, :destroy]
+  before_action :set_todo, only: [:show, :edit, :update, :destroy, :complete, :incomplete]
 
   # GET /todos
   # GET /todos.json
   def index
-    @todos = Todo.all
+    @todos = Todo.where(user: current_user)
     # @pagy, @todos = pagy(Todo.all)
   end
 
@@ -62,6 +62,16 @@ class TodosController < ApplicationController
       format.json { head :no_content }
       # format.js   { render :layout => false }
     end
+  end
+  
+  def complete
+    @todo.update_attribute(:complete, true)
+    redirect_to action: "index", notice: "complete and visible!"
+  end
+  
+  def incomplete
+    @todo.update_attribute(:complete, false)
+    redirect_to action: "index", notice: "incomplete and visible!"
   end
 
   private
